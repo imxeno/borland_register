@@ -1,5 +1,5 @@
 # borland_register
-A translation layer for calling functions using Borland's `register` calling convention from `cdecl` C++ scope.
+A translation layer for calling functions using Borland's `register` calling convention from `cdecl` C++ scope and vice versa.
 
 ## Example usage
 ```c++
