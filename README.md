@@ -24,5 +24,12 @@ delphi_function_3 func = (delphi_function_3)brt.cdecl_to_register(farProc, 3);
 // Calling the proxy is as simple as
 func(1, 2, 3);
 
-// You can also generate a proxy that will translate it the other way using translator::register_to_cdecl
+// You can also generate a proxy that will translate it
+// the other way using translator::register_to_cdecl
 ```
+
+## Credits
+
+- My research was heavily based on [Calling conventions for different C++ compilers and operating systems](https://www.agner.org/optimize/calling_conventions.pdf) by Agner Fog.
+- The library is using [AsmJit](https://asmjit.com) for runtime x86 machine code generation.
+- Project icon is a mashup of [Embarcadero's product logo style](https://www.embarcadero.com/news/logo) and the [Translate Icon](https://iconscout.com/icon/translate-1779550) by [Iconscout](https://iconscout.com).
