@@ -11,7 +11,7 @@ borland_register::translator::translator() : runtime_(new JitRuntime())
 {
 }
 
-void* borland_register::translator::cdecl_to_register(void* func, int argc) const
+void* borland_register::translator::cdecl_to_register(void* func, const int argc) const
 {
 	CodeHolder code;
 	code.init(runtime_->environment());
@@ -44,7 +44,7 @@ void* borland_register::translator::cdecl_to_register(void* func, int argc) cons
 	a.ret();
 
 	void* proxy_address;
-	Error err = runtime_->add(&proxy_address, &code);
+	const auto err = runtime_->add(&proxy_address, &code);
 	
 	if(err)
 	{
@@ -54,7 +54,7 @@ void* borland_register::translator::cdecl_to_register(void* func, int argc) cons
 	return proxy_address;
 }
 
-void* borland_register::translator::register_to_cdecl(void* func, int argc) const
+void* borland_register::translator::register_to_cdecl(void* func, const int argc) const
 {
 	CodeHolder code;
 	code.init(runtime_->environment());
@@ -95,7 +95,7 @@ void* borland_register::translator::register_to_cdecl(void* func, int argc) cons
 	a.ret();
 
 	void* proxy_address;
-	Error err = runtime_->add(&proxy_address, &code);
+	const auto err = runtime_->add(&proxy_address, &code);
 	
 	if (err)
 	{
