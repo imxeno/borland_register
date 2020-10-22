@@ -15,8 +15,8 @@ namespace borland_register
 	class translator {
 	public:
 		translator();
-		void* cdecl_to_register(void* func, int argc);
-		void* register_to_cdecl(void* func, int argc);
+		void* cdecl_to_register(void* func, int argc) const;
+		void* register_to_cdecl(void* func, int argc) const;
 	private:
 		std::unique_ptr<asmjit::JitRuntime> runtime_;
 	};
