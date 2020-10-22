@@ -101,6 +101,11 @@ void* borland_register::translator::register_to_cdecl(void* func, const int argc
 	{
 		return nullptr;
 	}
-
+	
 	return proxy_address;
+}
+
+bool borland_register::translator::release(void* func) const
+{
+	return runtime_->release(func) == 0;
 }

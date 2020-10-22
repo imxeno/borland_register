@@ -17,6 +17,7 @@ namespace borland_register
 		translator();
 		void* cdecl_to_register(void* func, int argc) const;
 		void* register_to_cdecl(void* func, int argc) const;
+		bool release(void* func) const;
 	private:
 		std::unique_ptr<asmjit::JitRuntime> runtime_;
 	};
