@@ -3,17 +3,22 @@
 
 #ifndef BORLAND_REGISTER_H
 #define BORLAND_REGISTER_H
+#include <memory>
 
-#include "asmjit/asmjit.h"
-
+namespace asmjit {
+	// ReSharper disable once CppInconsistentNaming
+	class JitRuntime;
+}
+	
 namespace borland_register
 {
 	class translator {
 	public:
+		translator();
 		void* cdecl_to_register(void* func, int argc);
 		void* register_to_cdecl(void* func, int argc);
 	private:
-		asmjit::JitRuntime runtime_;
+		std::unique_ptr<asmjit::JitRuntime> runtime_;
 	};
 }
 

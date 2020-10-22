@@ -2,14 +2,19 @@
 //
 
 #include "borland_register.h"
+#include "asmjit/asmjit.h"
 
 using namespace asmjit;
 using namespace x86;
 
+borland_register::translator::translator() : runtime_(new JitRuntime())
+{
+}
+
 void* borland_register::translator::cdecl_to_register(void* func, int argc)
 {
 	CodeHolder code;
-	code.init(runtime_.environment());
+	code.init(runtime_->environment());
 	Assembler a(&code);
 	
 	auto offset = 0;
@@ -39,7 +44,7 @@ void* borland_register::translator::cdecl_to_register(void* func, int argc)
 	a.ret();
 
 	void* proxy_address;
-	Error err = runtime_.add(&proxy_address, &code);
+	Error err = runtime_->add(&proxy_address, &code);
 	
 	if(err)
 	{
@@ -52,7 +57,7 @@ void* borland_register::translator::cdecl_to_register(void* func, int argc)
 void* borland_register::translator::register_to_cdecl(void* func, int argc)
 {
 	CodeHolder code;
-	code.init(runtime_.environment());
+	code.init(runtime_->environment());
 	Assembler a(&code);
 
 	for (auto i = 3; i < argc; i++)
@@ -90,7 +95,7 @@ void* borland_register::translator::register_to_cdecl(void* func, int argc)
 	a.ret();
 
 	void* proxy_address;
-	Error err = runtime_.add(&proxy_address, &code);
+	Error err = runtime_->add(&proxy_address, &code);
 	
 	if (err)
 	{
