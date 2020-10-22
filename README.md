@@ -1,7 +1,13 @@
+<div align="center">
+  <img src="/.github/logo.png?raw=true" alt="borland_register logo" height="150" />
+</div>
+
 # borland_register
+
 A translation layer for calling functions using Borland's `register` calling convention from `cdecl` C++ scope and vice versa.
 
 ## Example usage
+
 ```c++
 // Warning: the translator MUST be in scope!
 // If it goes out of scope, all proxy functions bound to it will be deallocated
